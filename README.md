@@ -1,66 +1,208 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## **README.md**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### **Introducción**
 
-## About Laravel
+Este proyecto proporciona una API RESTful para gestionar clientes, implementando funcionalidades de registro, consulta, eliminación y autenticación.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### **Requisitos Previos**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Servidor web:** Apache.
+* **PHP:** php 8.3 Versión compatible con Laravel 11
+* **Composer:** Gestor de dependencias de PHP.
+* **Base de datos:** MySQL (o compatible)
+* **Node.js y npm:**  Para herramientas de desarrollo frontend.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **Instalación**
 
-## Learning Laravel
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/vojdel/Prueba-GDA-Jose-Daniel-Vasquez-Pineda.git
+   ```
+2. **Instalar dependencias:**
+   ```bash
+   cd Prueba-GDA-Jose-Daniel-Vasquez-Pineda
+   composer install
+   ```
+3. **Configurar la base de datos:**
+   * Copiar el archivo `.env.example` a `.env` y ajustar las credenciales de la base de datos.
+   * Ejecutar las migraciones:
+     ```bash
+     php artisan migrate
+     ```
+4. **Generar la clave secreta:**
+   ```bash
+   php artisan key:generate
+   ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### **Configuración**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* **Autenticación:**
+  * El sistema utiliza tokens para autenticar las solicitudes.
+  * El token se genera al iniciar sesión y debe incluirse en el encabezado `Authorization` de cada solicitud en el formato `Bearer token`.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### **Uso**
 
-## Laravel Sponsors
+#### **Endpoints**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* **Registro de un cliente:**
+  * Método: POST
+  * URL: /api/customers
+  * Cuerpo: JSON con los datos del cliente (nombre, apellido, email, etc.)
+* **Consulta de un cliente:**
+  * Método: GET
+  * URL: /api/customers/{id}
+* **Eliminación de un cliente:**
+  * Método: DELETE
+  * URL: /api/customers/{id}
+* **Autenticación:**
+  * Método: POST
+  * URL: /api/login
+  * Cuerpo: JSON con las credenciales (email, password)
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### **Logs**
 
-## Contributing
+* Los logs se almacenan en storage/logs/infologs.log
+* Estan los logs de entrada y salida, para desactivar los de entrada es cambiar el valor de la variable APP_ENV de true a false
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **Documentación en Swagger**
 
-## Code of Conduct
+* La documentación de la API con sus respectivos endpoints esta en http://localhost:8000/api/documentation
+* Despues de cada cambio usar el comando de:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+$ php artisan l5-swagger:generate
+```
 
-## Security Vulnerabilities
+**Herramientas para generar documentación:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* **Swagger UI:** Genera una interfaz interactiva para explorar la API.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+### Endpoints del Proyecto
+
+GET /api/customers
+Obtiene todos los clientes
+
+Respuesta
+```
+[
+    {
+        "id": 1,
+        "name": "Juan Pérez",
+        "email": "juan@example.com",
+        "phone": "1234567890"
+    },
+    {
+        "id": 2,
+        "name": "María García",
+        "email": "maria@example.com",
+        "phone": "9876543210"
+    }
+]
+```
+GET /api/customers/{id}
+Obtiene un cliente por ID
+
+* Parámetros
+```
+| Nombre | Tipo    | Descripción    |
+| ------ | ------- | -------------- |
+| id     | integer | ID del cliente |
+```
+
+Respuesta
+```
+{
+    "id": 1,
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "phone": "1234567890"
+}
+```
+POST /api/customers
+Crea un nuevo cliente
+
+Parámetros
+```
+| Nombre | Tipo | Descripción | | --- | --- | --- | | name | string | Nombre del cliente | | email | string | Correo electrónico del cliente | | phone | string | Teléfono del cliente |
+```
+Respuesta
+```
+{
+    "id": 3,
+    "name": "Pedro López",
+    "email": "pedro@example.com",
+    "phone": "5555555555"
+}
+```
+PUT /api/customers/{id}
+Actualiza un cliente
+
+Parámetros
+```
+| Nombre | Tipo | Descripción | | --- | --- | --- | | id | integer | ID del cliente | | name | string | Nombre del cliente | | email | string | Correo electrónico del cliente | | phone | string | Teléfono del cliente |
+```
+Respuesta
+```
+{
+    "id": 1,
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "phone": "1234567890"
+}
+```
+DELETE /api/customers/{id}
+Elimina un cliente
+
+Parámetros
+```
+| Nombre | Tipo | Descripción | | --- | --- | --- | | id | integer | ID del cliente |
+```
+
+Respuesta
+```
+{
+    "message": "Cliente eliminado con éxito"
+}
+```
+#### POST /api/register
+Registra un nuevo usuario
+
+Parámetros
+```
+| Nombre | Tipo | Descripción | | --- | --- | --- | | name | string | Nombre del usuario | | email | string | Correo electrónico del usuario | | password | string | Contraseña del usuario |
+```
+
+Respuesta
+```
+json
+CopyInsert
+{
+    "id": 1,
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+}
+```
+LoginController
+POST /api/login
+Inicia sesión un usuario
+
+Parámetros
+```
+| Nombre | Tipo   | Descripción                    |
+| ------ | ------ | ------------------------------ |
+| email  | string | Correo electrónico del usuario |  | password | string | Contraseña del usuario |
+```
+
+Respuesta
+```
+{
+    "id": 1,
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+}
+```

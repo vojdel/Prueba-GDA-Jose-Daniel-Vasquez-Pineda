@@ -23,7 +23,7 @@ return new class extends Migration
             $table->dateTime('date_reg', precision: 0)
                 ->comment('Fecha y Hora de Registro');
             $table->enum('trash', ['A', 'I'])->default('A')
-                ->comment('estado del registro:\nA : Activo\nI : Desactivo\ntrash : Registro eliminado');
+                ->comment('estado del registro:\n A: Activo\n I : Desactivo\n trash: Registro eliminado');
             $table->foreign('id_com', 'fk_customers_communes1_idx')
                 ->references('id_com')->on('communes')
                 ->onDelete('cascade');
