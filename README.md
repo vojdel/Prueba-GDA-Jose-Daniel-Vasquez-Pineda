@@ -22,10 +22,11 @@ Este proyecto proporciona una API RESTful para gestionar clientes, implementando
    ```bash
    cd Prueba-GDA-Jose-Daniel-Vasquez-Pineda
    composer install
+   npm install && npm run build
    ```
 3. **Configurar la base de datos:**
-   * Copiar el archivo `.env.example` a `.env` y ajustar las credenciales de la base de datos.
-   * Ejecutar las migraciones:
+* Copiar el archivo `.env.example` a `.env` y ajustar las credenciales de la base de datos.
+* Ejecutar las migraciones:
      ```bash
      php artisan migrate
      ```
